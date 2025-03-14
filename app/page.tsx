@@ -1,103 +1,109 @@
-import Image from "next/image";
+import { Container } from '@/components/shared/container';
+import Footer from '@/components/shared/footer';
+import { HistoryContent } from '@/components/shared/history-content';
+import CharacterSelection from '@/components/shared/person-history';
+import { Title } from '@/components/shared/title';
+import { historyData } from '@/data/historyData';
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <>
+      <Container
+        className="mb-21 grid grid-cols-3 grid-auto-columns minmax[0,1fr] max-h-[671px] h-full bg-[#FAF9F3] px-5 border-b-2"
+        size="xs"
+      >
+        <div>
+          <div className="flex flex-row-reverse gap-5">
+            <span className="py-3 px-2 bg-red-700 text-black max-w-[32px] h-[280px] text-xl">
+              いらっしゃいませ
+            </span>
+            <span className="block h-[285px] w-0.5 bg-black "></span>
+            <span className="block h-[313px] w-0.5 bg-black "></span>
+            <span className="block h-[295px] w-0.5 bg-black "></span>
+          </div>
+          <div>
+            <p>Ha sempre uma luz no final</p>
+            <Title text={'Hikari no Nisshoku'} size="xl" />
+            <p>
+              Seja bem-vindo ao novo mundo dela onde a vida pode depender de uma
+              simples fagulha de brasa, quando o eclipse chega a terra se torna
+              um inferno para todos.
+            </p>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+        <img
+          src={'./header-picture.png'}
+          alt="Главное изображение аниме"
+          className=""
+        />
+        <div className="relative flex flex-col justify-around p-6 text-black w-full py-11">
+          <div className="flex flex-row-reverse justify-between">
+            <h2 className="inline text-[40px] font-bold rotate-90 text-nowrap">
+              COUTDOWN <br /> PARA O{' '}
+              <span className="text-red-600">ECLIPSE</span>
+            </h2>
+            <div className="inline-flex flex-col gap-6">
+              {[
+                { time: '14', label: 'Dias' },
+                { time: '09', label: 'Horas' },
+                { time: '27', label: 'Minutos' },
+              ].map((item, index) => (
+                <div key={index} className="flex items-center gap-2">
+                  <span className="w-[1px] h-[45px] bg-red-600" />
+                  <div className="flex flex-col items-start">
+                    <span className="text-4xl font-bold">{item.time}</span>
+                    <span className="text-xs uppercase">{item.label}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <button className="bg-red-600 text-white px-6 py-2 mt-6 font-bold uppercase w-full">
+            Reserve
+          </button>
+        </div>
+      </Container>
+
+      <Container className="grid grid-cols-2 mb-40" size="xs">
+        <div className="bg-[#FAF9F3] px-20">
+          <nav className="mb-8">
+            <ul className="flex gap-6">
+              {['Historia', 'Ambiente', 'Inimigos', 'Curiosidade'].map(
+                (item) => (
+                  <li key={item}>
+                    <a
+                      className="uppercase border-b-2 hover:border-black-red pb-8"
+                      href="#"
+                    >
+                      {item}
+                    </a>
+                  </li>
+                )
+              )}
+            </ul>
+          </nav>
+          {historyData.map((item) => (
+            <HistoryContent key={item.id} {...item} />
+          ))}
+          <button className="px-6 py-3 bg-red-700 text-white uppercase">
+            CONHEÇA O LUGAR
+          </button>
+        </div>
+        <div
+          className="bg-center bg-no-repeat bg-contain relative"
+          style={{ backgroundImage: "url('/history-bg.svg')" }}
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+          <img
+            className="absolute bottom-48 left-[-29px] h-auto max-w-none"
+            src="./Subtract.png"
+            alt="Фон истории"
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        </div>
+      </Container>
+
+      <CharacterSelection />
+
+      <Footer />
+    </>
   );
 }
